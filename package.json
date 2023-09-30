@@ -1,0 +1,8 @@
+{
+  "name": "oymo-generator",
+  "packageManager": "yarn@3.6.3",
+  "dependencies": {
+    "three": "latest",
+    "webpack": "latest"
+  }
+}
