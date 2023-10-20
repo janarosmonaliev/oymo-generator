@@ -3,6 +3,7 @@
   "packageManager": "yarn@3.6.3",
   "private": true,
   "dependencies": {
+    "html-webpack-plugin": "^5.5.3",
     "three": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
@@ -11,7 +12,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
-    "start": "webpack serve --open",
+    "start": "webpack serve --open --watch",
     "build": "webpack"
   }
 }

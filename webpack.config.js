@@ -1,7 +1,9 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
+  watch: true,
   entry: {
     index: "./src/index.js",
   },
@@ -9,6 +11,12 @@ module.exports = {
   devServer: {
     static: "./dist",
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Oymo Development",
+      template: "./src/index-template.html",
+    }),
+  ],
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -16,5 +24,13 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: "single",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
 };
