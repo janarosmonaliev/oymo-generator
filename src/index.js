@@ -86,31 +86,42 @@ const curve3 = new THREE.CatmullRomCurve3(
 );
 const points3 = curve3.getPoints(40);
 
-const geometry = new THREE.BufferGeometry().setFromPoints([
+const geometry1 = new THREE.BufferGeometry().setFromPoints([
   ...points1,
   ...points2,
   ...points3,
 ]);
 
-const quaternion = new THREE.Quaternion();
-quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
-const geometry2 = geometry.clone();
-geometry2.applyQuaternion(quaternion);
+const geometry2 = geometry1.clone();
+
+const quaternion2 = new THREE.Quaternion();
+const quaternion3 = new THREE.Quaternion();
+const quaternion4 = new THREE.Quaternion();
+quaternion2.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
+geometry2.applyQuaternion(quaternion2);
+geometry2;
+const geometry3 = geometry2.clone();
+
+quaternion3.setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI);
+geometry3.applyQuaternion(quaternion3);
+const geometry4 = geometry3.clone();
+quaternion4.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
+geometry4.applyQuaternion(quaternion4);
 
 const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
 
-const geometry3 = BufferGeometryUtils.mergeGeometries(
-  [geometry, geometry2],
-  true
+const geometry = BufferGeometryUtils.mergeGeometries(
+  [geometry1, geometry2, geometry3, geometry4],
+  false
 );
 // Create the final object to add to the scene
-const splineObject = new THREE.Line(geometry3, material);
+const splineObject = new THREE.Line(geometry, material);
 // const splineObject2 = new THREE.Line(geometry2, material);
 scene.add(splineObject);
 // scene.add(splineObject2);
 
-camera.position.set(20, 20, 20);
-camera.lookAt(0, 20, 0);
+camera.position.set(0, 0, 20);
+camera.translateY(5);
 controls.update();
 animate();
 

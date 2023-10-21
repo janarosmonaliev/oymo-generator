@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   watch: true,
   entry: {
-    index: "./src/index.js",
+    index: "./src/sandbox.js",
   },
   devtool: "inline-source-map",
   devServer: {
